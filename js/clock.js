@@ -5,6 +5,10 @@ setInterval(현재시간표시하기, 1000)
 
 function 현재시간표시하기(){
     const date = new Date();
-    clock.innerHTML = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+    const hours = date.getHours().toString().padStart(2,"0")
+    const minutes = date.getMinutes().toString().padStart(2,"0")
+    const seconds = date.getSeconds().toString().padStart(2,"0")
+    
+    clock.innerHTML = `${hours}:${minutes}:${seconds}`
 }
 
