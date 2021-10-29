@@ -8,19 +8,24 @@
     <title>모멘텀 앱</title>
 </head>
 <body>
+    <h2 id="clock">00:00:00</h2>
     <form id="로그인폼">
         <input required type="text" placeholder="이름이 뭐니?" maxlength="10">
         <button>로그인</button>
     </form>
     <h1 class="hidden"></h1>
-    <h2 id="clock">00:00:00</h2>
+    <form id="todo-form">
+        <input type="text" placeholder="할 일을 입력하세요">
+    </form>
+    <ul id="todo-list"></ul>
     <div id="quote">
-        <span>하하하하</span>
+        <span></span>
     </div>
 
 
     <script src="./js/greetings.js"></script>
     <script src="./js/clock.js"></script>
     <script src="./js/quotes.js"></script>
+    <script src="./js/todo.js"></script>
 </body>
 </html>
