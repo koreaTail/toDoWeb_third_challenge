@@ -9,7 +9,7 @@ const quotes = [
         quote: "그대가 공중에 누각을 쌓았더라도 그것은 헛된 일이 아니다. 누각은 원래 공중에 있어야 하니까. 이제 그 밑에 토대만 쌓으면 된다."
     },
     {
-        quote: "처음 시작하면 못하는 게 당연하다. 그걸 받아드리는 것이 잘하게 되는 첫걸음이다."
+        quote: "처음엔 못하는 게 당연하다. 그걸 받아드리는 것이 잘하게 되는 첫걸음이다."
     },
     {
         quote: "성공과 실패를 보상하라. 그러나 아무것도 하지 않은 경우에는 처벌하라."
@@ -34,9 +34,6 @@ const quotes = [
 
 const quote = document.querySelector("#quote span:first-child")
 
-quote.innerText = quotes[getRandomIntInclusive(quotes.length-1)].quote
+quote.innerText = quotes[Math.floor(Math.random()*quotes.length)].quote
 
-function getRandomIntInclusive(max) {
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max + 1));
-  }
+
