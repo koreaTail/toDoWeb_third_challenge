@@ -2,6 +2,9 @@ const todoForm = document.querySelector("#todo-form")
 const input = todoForm.querySelector("input")
 const ul = document.querySelector("#todo-list")
 
+const toDos = [];
+
+
 todoForm.addEventListener("submit", 투두제출시할일)
 
 function 방금작성한할일화면에표시하기(방금작성한할일) {
@@ -14,6 +17,11 @@ function 방금작성한할일화면에표시하기(방금작성한할일) {
   li.appendChild(span);
   li.appendChild(button);
   ul.appendChild(li);
+  // 로컬에 저장하기
+  toDos.push(방금작성한할일);
+  localStorage.setItem("toDos", JSON.stringify(toDos))
+  console.log(localStorage.getItem("toDos"))
+  // 로컬에 저장된거 화면에 표시하기
 }
 
 
