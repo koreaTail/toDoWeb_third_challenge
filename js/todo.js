@@ -29,6 +29,13 @@ function 방금작성한할일화면에표시하기(방금작성한할일) {
 
 function 선택된할일삭제하기(e) {
   e.target.parentNode.remove()
+  // 이걸 지우면, 통째로 지워져.. 이렇게 할 수 없고, 새로 그리는 방식으로 해야할듯..
+  // localStorage.removeItem(TODOS_KEY)
+  console.log(toDos)
+  console.dir(e.target.parentElement.children[0])
+  // 몇번째꺼인지만 알아내면 된다.. 그순간. 알아야해.
+  // 몇번째껄 눌렀는지.. 타겟으로 알 수 없나..
+  // console.dir(ul.children[??????].innerText)
 }
 
 function 투두제출시할일() {
@@ -48,5 +55,5 @@ const 저장된할일 = localStorage.getItem(TODOS_KEY);
 if (저장된할일 !== null) {
   저장된할일화면에표시하기(저장된할일)
 } else {
-  로그인폼.addEventListener("submit", 이름제출되면할일)
+  
 }
