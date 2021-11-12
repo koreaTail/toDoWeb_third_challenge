@@ -58,8 +58,15 @@ const 저장된할일 = localStorage.getItem(TODOS_KEY);
 
 if (저장된할일 !== null) {
   // 딴데다 저장해놓자.
-  console.log(JSON.parse(저장된할일))
-  저장된할일화면에표시하기(저장된할일)
+  console.dir(JSON.parse(저장된할일))
+  const obj = JSON.parse(저장된할일)
+  for(var key in obj){
+    console.log(obj[key].text)
+  }
+  console.log(JSON.parse(저장된할일)[0].text)  
+  console.log(JSON.parse(저장된할일)[1].text)
+  console.log(JSON.parse(저장된할일)[2].text)
+  // 저장된할일화면에표시하기(저장된할일)
 } else {
   
 }
