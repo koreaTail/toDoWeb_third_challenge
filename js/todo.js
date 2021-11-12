@@ -19,7 +19,11 @@ function 방금작성한할일화면에표시하기(방금작성한할일) {
   li.appendChild(button);
   ul.appendChild(li);
   // 로컬에 저장하기
-  toDos.push(방금작성한할일);
+  const 방금작성한할일객체화하기 = {
+    text:방금작성한할일,
+    id:Date.now(),
+  };
+  toDos.push(방금작성한할일객체화하기);
   localStorage.setItem(TODOS_KEY, JSON.stringify(toDos))
   // 로컬에 저장된거 화면에 표시하기
 }
