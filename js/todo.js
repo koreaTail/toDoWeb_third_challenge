@@ -31,6 +31,8 @@ function 방금작성한할일화면에표시하기(방금작성한할일) {
 
 
 
+
+
 function 선택된할일삭제하기(e) {
   e.target.parentNode.remove()
   // 이걸 지우면, 통째로 지워져.. 이렇게 할 수 없고, 새로 그리는 방식으로 해야할듯..
@@ -59,10 +61,9 @@ const 저장된할일 = localStorage.getItem(TODOS_KEY);
 if (저장된할일 !== null) {
   // 딴데다 저장해놓자.
   console.dir(JSON.parse(저장된할일))
-  const obj = JSON.parse(저장된할일)
-  for(var key in obj){
-    console.log(obj[key].text)
-  }
+  JSON.parse(저장된할일).forEach((a) => 방금작성한할일화면에표시하기(a.text))
+  JSON.parse(저장된할일).forEach((b) => 방금작성한할일화면에표시하기(b.id))
+  console.log(toDos)
   console.log(JSON.parse(저장된할일)[0].text)  
   console.log(JSON.parse(저장된할일)[1].text)
   console.log(JSON.parse(저장된할일)[2].text)
