@@ -2,7 +2,7 @@ const todoForm = document.querySelector("#todo-form")
 const input = todoForm.querySelector("input")
 const ul = document.querySelector("#todo-list")
 
-const toDos = [];
+let toDos = [];
 const TODOS_KEY = "toDos"
 
 
@@ -10,25 +10,23 @@ todoForm.addEventListener("submit", 투두제출시할일)
 
 function 방금작성한할일화면에표시하기(방금작성한할일) {
   const li = document.createElement("li");
+  li.id = 방금작성한할일.id
   const span = document.createElement("span");
-  span.innerText = 방금작성한할일;
+  span.innerText = 방금작성한할일.text;
   const button = document.createElement("button");
   button.innerText = "X";
   button.addEventListener("click", 선택된할일삭제하기)
   li.appendChild(span);
   li.appendChild(button);
   ul.appendChild(li);
-  // 로컬에 저장하기
-  const 방금작성한할일객체화하기 = {
-    text:방금작성한할일,
-    id:Date.now(),
-  };
-  toDos.push(방금작성한할일객체화하기);
-  localStorage.setItem(TODOS_KEY, JSON.stringify(toDos))
-  // 로컬에 저장된거 화면에 표시하기
+
+
+  
 }
 
-
+function 할일로컬에저장하기(){
+  localStorage.setItem(TODOS_KEY, JSON.stringify(toDos))
+}
 
 
 
@@ -37,37 +35,42 @@ function 선택된할일삭제하기(e) {
   e.target.parentNode.remove()
   // 이걸 지우면, 통째로 지워져.. 이렇게 할 수 없고, 새로 그리는 방식으로 해야할듯..
   // localStorage.removeItem(TODOS_KEY)
-  console.log(toDos)
-  console.dir(e.target.parentElement.children[0])
+  // console.log(toDos)
+  // console.dir(e.target.parentElement.children[0])
   // 몇번째꺼인지만 알아내면 된다.. 그순간. 알아야해.
   // 몇번째껄 눌렀는지.. 타겟으로 알 수 없나..
   // console.dir(ul.children[??????].innerText)
 }
 
-function 투두제출시할일() {
+function 투두제출시할일(event) {
   event.preventDefault();
   const 방금작성한할일 = input.value;
   input.value = "";
-  방금작성한할일화면에표시하기(방금작성한할일)
+
+  // 로컬에 저장하기
+  const 방금작성한할일객체화하기 = {
+    text:방금작성한할일,
+    id:Date.now(),
+  };
+  toDos.push(방금작성한할일객체화하기);
+  방금작성한할일화면에표시하기(방금작성한할일객체화하기)
+  할일로컬에저장하기()
+  
 }
 
-
-function 저장된할일화면에표시하기(저장된할일){
-  JSON.parse(저장된할일).forEach(방금작성한할일화면에표시하기)
-}
 
 const 저장된할일 = localStorage.getItem(TODOS_KEY);
 
 if (저장된할일 !== null) {
   // 딴데다 저장해놓자.
-  console.dir(JSON.parse(저장된할일))
-  JSON.parse(저장된할일).forEach((a) => 방금작성한할일화면에표시하기(a.text))
-  JSON.parse(저장된할일).forEach((b) => 방금작성한할일화면에표시하기(b.id))
-  console.log(toDos)
-  console.log(JSON.parse(저장된할일)[0].text)  
-  console.log(JSON.parse(저장된할일)[1].text)
-  console.log(JSON.parse(저장된할일)[2].text)
-  // 저장된할일화면에표시하기(저장된할일)
+  // console.dir(JSON.parse(저장된할일))
+  toDos = JSON.parse(저장된할일)
+  JSON.parse(저장된할일).forEach((a) => 방금작성한할일화면에표시하기(a))
+  // console.log(저장된할일)
+  // toDos.push(저장된할일)
+  // console.log(JSON.parse(저장된할일)[0].text)  
+  // console.log(JSON.parse(저장된할일)[1].text)
+  // console.log(JSON.parse(저장된할일)[2].text)
 } else {
   
 }
