@@ -19,9 +19,6 @@ function 방금작성한할일화면에표시하기(방금작성한할일) {
   li.appendChild(span);
   li.appendChild(button);
   ul.appendChild(li);
-
-
-
 }
 
 function 할일로컬에저장하기() {
@@ -52,8 +49,8 @@ function 투두제출시할일(event) {
     text: 방금작성한할일,
     id: Date.now(),
   };
-  toDos.push(방금작성한할일객체화하기);
   방금작성한할일화면에표시하기(방금작성한할일객체화하기)
+  toDos.push(방금작성한할일객체화하기);
   할일로컬에저장하기()
 
 }
@@ -62,7 +59,8 @@ function 투두제출시할일(event) {
 const 저장된할일 = localStorage.getItem(TODOS_KEY);
 
 if (저장된할일 !== null) {
-  저장된할일화면에표시하기(저장된할일)
+  // 저장된할일화면에표시하기(개별할일)
+  JSON.parse(저장된할일).forEach((개별할일) => 방금작성한할일화면에표시하기(개별할일))
 } else {
 
 }
