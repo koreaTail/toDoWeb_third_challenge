@@ -29,6 +29,7 @@ function 할일로컬에저장하기() {
 
 function 선택된할일삭제하기(e) {
   e.target.parentNode.remove()
+  console.log(e.target.parentNode.id)
   // 이걸 지우면, 통째로 지워져.. 이렇게 할 수 없고, 새로 그리는 방식으로 해야할듯..
   // localStorage.removeItem(TODOS_KEY)
   // console.log(toDos)
@@ -60,6 +61,7 @@ const 저장된할일 = localStorage.getItem(TODOS_KEY);
 if (저장된할일 !== null) {
   // 저장된할일화면에표시하기(개별할일)
   JSON.parse(저장된할일).forEach((개별할일) => 방금작성한할일화면에표시하기(개별할일))
+  toDos = JSON.parse(저장된할일)
 } else {
 
 }
