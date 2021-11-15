@@ -21,15 +21,19 @@ function 방금작성한할일화면에표시하기(방금작성한할일) {
   ul.appendChild(li);
 }
 
-function 할일로컬에저장하기() {
+function 할일로컬에저장하기() { 
   localStorage.setItem(TODOS_KEY, JSON.stringify(toDos))
 }
 
 
-
+ 
 function 선택된할일삭제하기(e) {
+  console.log(parseInt(e.target.parentNode.id))
   e.target.parentNode.remove()
-  console.log(e.target.parentNode.id)
+  console.log(toDos.find(x => x.id === parseInt(e.target.parentNode.id)) ) 
+  const 제거된할일목록 = toDos.filter(x => x.id !== parseInt(e.target.parentNode.id))  
+  toDos = 제거된할일목록; 
+  할일로컬에저장하기()
   // 이걸 지우면, 통째로 지워져.. 이렇게 할 수 없고, 새로 그리는 방식으로 해야할듯..
   // localStorage.removeItem(TODOS_KEY)
   // console.log(toDos)
