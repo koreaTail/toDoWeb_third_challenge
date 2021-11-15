@@ -25,12 +25,10 @@ function 할일로컬에저장하기() {
   localStorage.setItem(TODOS_KEY, JSON.stringify(toDos))
 }
 
-
- 
 function 선택된할일삭제하기(e) {
   e.target.parentNode.remove()
-  const 제거된할일목록 = toDos.filter(x => x.id !== parseInt(e.target.parentNode.id))  
-  toDos = 제거된할일목록; 
+  toDos = toDos.filter(x => x.id !== parseInt(e.target.parentNode.id))  
+  할일로컬에저장하기()
 }
 
 function 투두제출시할일(event) {
@@ -42,10 +40,10 @@ function 투두제출시할일(event) {
     text: 방금작성한할일,
     id: Date.now(),
   };
+
   방금작성한할일화면에표시하기(방금작성한할일객체화하기)
   toDos.push(방금작성한할일객체화하기);
   할일로컬에저장하기()
-
 }
 
 
@@ -55,5 +53,5 @@ if (저장된할일 !== null) {
   JSON.parse(저장된할일).forEach((개별할일) => 방금작성한할일화면에표시하기(개별할일))
   toDos = JSON.parse(저장된할일)
 } else {
-
+  
 }
